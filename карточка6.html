@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Привычки</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#0f1015;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    color:white;
+    overflow:hidden;
+}
+
+/* ОСНОВНОЙ ЭКРАН */
+
+.app{
+    width:100%;
+    max-width:420px;
+    height:100vh;
+    background:
+        radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 30%),
+        linear-gradient(to bottom,#111217,#0d0e13);
+    position:relative;
+    overflow:hidden;
+    border-left:1px solid rgba(255,255,255,0.05);
+    border-right:1px solid rgba(255,255,255,0.05);
+}
+
+/* HEADER */
+
+.header{
+    height:82px;
+    padding:20px 20px 0;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+}
+
+.header h1{
+    font-size:28px;
+    font-weight:600;
+    letter-spacing:-0.5px;
+}
+
+.menu{
+    width:24px;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    margin-top:8px;
+}
+
+.menu span{
+    height:2px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.5);
+}
+
+.menu span:nth-child(2){
+    width:70%;
+    margin-left:auto;
+}
+
+.menu span:nth-child(3){
+    width:40%;
+    margin-left:auto;
+}
+
+/* TASK */
+
+.task{
+    padding:18px 20px;
+}
+
+.task-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.circle{
+    width:22px;
+    height:22px;
+    border:2px solid rgba(255,255,255,0.65);
+    border-radius:50%;
+}
+
+.task-text{
+    font-size:24px;
+    color:white;
+}
+
+.line{
+    width:100%;
+    height:1px;
+    background:rgba(255,255,255,0.08);
+    margin-top:14px;
+    margin-left:28px;
+}
+
+/* INPUT CARD */
+
+.bottom-card{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:78px;
+    height:365px;
+    padding:22px 18px;
+    border-top-left-radius:26px;
+    border-top-right-radius:26px;
+
+    background:
+        radial-gradient(circle at top left, rgba(88,117,255,0.18), transparent 35%),
+        radial-gradient(circle at top right, rgba(195,98,255,0.18), transparent 35%),
+        linear-gradient(180deg,#1b1c21,#17181d);
+
+    border-top:2px solid rgba(130,120,255,0.7);
+    box-shadow:
+        0 -2px 30px rgba(95,87,255,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.task-name{
+    color:rgba(255,255,255,0.45);
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.task-desc{
+    color:rgba(255,255,255,0.25);
+    font-size:20px;
+    margin-bottom:26px;
+}
+
+/* TAGS */
+
+.tags{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.tag{
+    padding:8px 14px;
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,0.35);
+    color:white;
+    font-size:14px;
+    background:rgba(255,255,255,0.03);
+    backdrop-filter:blur(8px);
+}
+
+.mic{
+    margin-left:auto;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#6d63ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    box-shadow:0 0 20px rgba(109,99,255,0.55);
+}
+
+/* SEND BUTTON */
+
+.send{
+    position:absolute;
+    right:16px;
+    bottom:88px;
+    width:54px;
+    height:54px;
+    border-radius:50%;
+    background:#6c63ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    box-shadow:0 0 28px rgba(108,99,255,0.5);
+}
+
+/* BOTTOM NAV */
+
+.nav{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:78px;
+    background:rgba(12,13,18,0.96);
+    border-top:1px solid rgba(255,255,255,0.05);
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+}
+
+.nav-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:5px;
+    color:rgba(255,255,255,0.5);
+    font-size:11px;
+}
+
+.nav-item svg{
+    width:22px;
+    height:22px;
+    opacity:0.8;
+}
+
+.active{
+    color:#6f6cff;
+}
+
+/* ПК */
+
+@media (min-width:768px){
+
+    body{
+        padding:40px;
+        overflow:auto;
+    }
+
+    .app{
+        height:900px;
+        border-radius:32px;
+        overflow:hidden;
+        box-shadow:
+            0 20px 60px rgba(0,0,0,0.6),
+            0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    .header h1{
+        font-size:34px;
+    }
+
+    .task-text{
+        font-size:26px;
+    }
+
+    .bottom-card{
+        height:390px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="header">
+        <h1>Привычки</h1>
+
+        <div class="menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="task">
+
+        <div class="task-row">
+            <div class="circle"></div>
+            <div class="task-text">Текст</div>
+        </div>
+
+        <div class="line"></div>
+
+    </div>
+
+    <div class="bottom-card">
+
+        <div class="task-name">Название задачи</div>
+
+        <div class="task-desc">Описание</div>
+
+        <div class="tags">
+
+            <div class="tag">Срок</div>
+            <div class="tag">Вложение</div>
+            <div class="tag">Приоритет</div>
+
+            <div class="mic">🎤</div>
+
+        </div>
+
+    </div>
+
+    <div class="send">➤</div>
+
+    <div class="nav">
+
+        <div class="nav-item">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="18" rx="3"/>
+                <path d="M16 2v4M8 2v4M3 10h18"/>
+            </svg>
+            <span>Входящие</span>
+        </div>
+
+        <div class="nav-item">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <rect x="4" y="4" width="16" height="16" rx="3"/>
+                <path d="M8 8h8M8 12h8M8 16h5"/>
+            </svg>
+            <span>Сегодня</span>
+        </div>
+
+        <div class="nav-item active">
+            <svg fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z"/>
+            </svg>
+            <span>Привычки</span>
+        </div>
+
+        <div class="nav-item">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <rect x="4" y="3" width="16" height="18" rx="3"/>
+                <path d="M8 7h8M8 12h8M8 17h5"/>
+            </svg>
+            <span>Расписание</span>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

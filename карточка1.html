@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ежедневные</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
+    }
+
+    body{
+      background:#000;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      overflow:hidden;
+    }
+
+    .app{
+      width:100%;
+      max-width:768px;
+      height:100vh;
+      background:#101116;
+      position:relative;
+      overflow:hidden;
+      border-left:1px solid #1f2026;
+      border-right:1px solid #1f2026;
+    }
+
+    .header{
+      height:90px;
+      background:#15161c;
+      border-bottom:1px solid #25262d;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 24px;
+    }
+
+    .header h1{
+      color:white;
+      font-size:42px;
+      font-weight:600;
+    }
+
+    .menu{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+      cursor:pointer;
+    }
+
+    .menu span{
+      width:30px;
+      height:2px;
+      background:#7d7f86;
+      border-radius:10px;
+    }
+
+    .content{
+      padding:28px 24px;
+    }
+
+    .task{
+      display:flex;
+      align-items:flex-start;
+      gap:16px;
+    }
+
+    .circle{
+      width:30px;
+      height:30px;
+      border:2px solid #b6b7bc;
+      border-radius:50%;
+      margin-top:2px;
+      flex-shrink:0;
+    }
+
+    .task-info{
+      flex:1;
+    }
+
+    .task-info p{
+      color:#d7d8dc;
+      font-size:26px;
+    }
+
+    .line{
+      width:100%;
+      height:1px;
+      background:#2d2f38;
+      margin-top:14px;
+    }
+
+    .add-btn{
+      position:absolute;
+      right:24px;
+      bottom:115px;
+      width:76px;
+      height:76px;
+      border-radius:50%;
+      border:none;
+      font-size:58px;
+      color:white;
+      cursor:pointer;
+      background:linear-gradient(135deg,#1278ff,#7f3dff);
+      box-shadow:0 0 30px rgba(98,0,255,0.45);
+    }
+
+    .bottom-nav{
+      position:absolute;
+      bottom:0;
+      left:0;
+      width:100%;
+      height:92px;
+      background:#121318;
+      border-top:1px solid #25262d;
+      display:flex;
+      justify-content:space-around;
+      align-items:center;
+    }
+
+    .nav-item{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:6px;
+      color:#7c7d84;
+      font-size:12px;
+      cursor:pointer;
+    }
+
+    .nav-item .icon{
+      font-size:28px;
+    }
+
+    .nav-item.active{
+      color:#6b63ff;
+    }
+
+    /* TABLET */
+
+    @media (max-width:768px){
+
+      .header h1{
+        font-size:32px;
+      }
+
+      .task-info p{
+        font-size:22px;
+      }
+
+      .add-btn{
+        width:70px;
+        height:70px;
+        font-size:52px;
+      }
+
+    }
+
+    /* PHONE */
+
+    @media (max-width:480px){
+
+      .header{
+        padding:0 18px;
+      }
+
+      .content{
+        padding:24px 18px;
+      }
+
+      .header h1{
+        font-size:28px;
+      }
+
+      .task-info p{
+        font-size:20px;
+      }
+
+      .circle{
+        width:28px;
+        height:28px;
+      }
+
+      .add-btn{
+        width:66px;
+        height:66px;
+        bottom:110px;
+        right:18px;
+        font-size:48px;
+      }
+
+      .bottom-nav{
+        height:86px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <div class="header">
+
+      <h1>Ежедневные</h1>
+
+      <div class="menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </div>
+
+    <div class="content">
+
+      <div class="task">
+
+        <div class="circle"></div>
+
+        <div class="task-info">
+          <p>Текст</p>
+          <div class="line"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <button class="add-btn">+</button>
+
+    <div class="bottom-nav">
+
+      <div class="nav-item active">
+        <div class="icon">◫</div>
+        <span>Ежедневные</span>
+      </div>
+
+      <div class="nav-item">
+        <div class="icon">▣</div>
+        <span>Сегодня</span>
+      </div>
+
+      <div class="nav-item">
+        <div class="icon">✦</div>
+        <span>Привычки</span>
+      </div>
+
+      <div class="nav-item">
+        <div class="icon">▤</div>
+        <span>Расписание</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
